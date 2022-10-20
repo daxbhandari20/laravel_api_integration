@@ -5,6 +5,60 @@
     }
 </style>
 
+<section>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <!-- Default form register -->
+                <form class="text-center border border-dark p-5" action="#!">
+
+                    <p class="h4 mb-4">Sign up</p>
+
+                    <!-- First name -->
+                    <input type="text" name="name" class="form-control mb-4" placeholder="Enter Name">
+
+                    <!-- E-mail -->
+                    <input type="email" name="email" class="form-control mb-4" placeholder="E-mail">
+
+                    <!-- Password -->
+                    <input type="password" name="password" class="form-control mb-4" placeholder="Password">
+
+                    <!-- Phone number -->
+                    <input type="password" name="password_confirmation" class="form-control"
+                        placeholder="Confirm Password">
+
+                    <!-- Sign up button -->
+                    <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+
+                    <!-- Register -->
+                    <p>Already Registered?
+                        <a href="/login">Click here to login</a>
+                    </p>
+
+                    <!-- Social register -->
+                    <p>or sign up with:</p>
+
+                    <a href="#" class="mx-2" role="button"><i
+                            class="fab fa-facebook-f light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i
+                            class="fab fa-linkedin-in light-blue-text"></i></a>
+                    <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                    <hr>
+
+                    <!-- Terms of service -->
+                    <p>By clicking
+                        <em>Sign up</em> you agree to our
+                        <a href="" target="_blank">terms of service</a>
+
+                </form>
+                <!-- Default form register -->
+            </div>
+        </div>
+    </div>
+</section>
+
 <h1>User Registration</h1>
 
 <form id="register_form">
