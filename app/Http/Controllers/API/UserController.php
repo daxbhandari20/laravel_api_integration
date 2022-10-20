@@ -32,4 +32,32 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'email' =>'required|string|email',
+            'password' =>'required|string|min:6'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        if (!$token = auth()->attempt($validator->validate())) {
+            return response()->json(['success'=>false,'msg'=>'Username and Password is Incorrect']);
+        }
+
+        return $this->respondWithToken($token);
+
+    }
+
+    protected function respondWithToken($token){
+        return response()->json([
+           'success'=>true,
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ]);
+    }
 }
