@@ -66,8 +66,17 @@ class UserController extends Controller
         try {
             auth()->logout();
             return response()->json(['success'=>true,'msg'=>'User logged out!!']);
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             return response()->json(['success'=>false,'msg'=>$th->getMessage()]);
+        }
+    }
+
+    public function profile()
+    {
+        try {
+            return response()->json(['success'=>true,'data'=>auth()->user()]);
+        } catch (Exception $e) {
+            return response()->json(['success'=>false,'msg'=>$e->getMessage()]);
         }
     }
 }
