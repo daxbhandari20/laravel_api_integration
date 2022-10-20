@@ -96,8 +96,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->save();
-            return response()->json(['success'=>true,'msg'=>'User Updated', 'data'=>$user]);
-
+            return response()->json(['success'=>true,'msg'=>'User Update Successfully', 'data'=>$user]);
         } else {
             return response()->json(['success'=>false,'msg'=>'User is not Authenticate']);
         }
