@@ -1,6 +1,6 @@
 @include('herder')
 <style>
-    span {
+    .error {
         color: red;
     }
 </style>
@@ -10,23 +10,23 @@
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <!-- Default form register -->
-                <form class="text-center border border-dark p-5" action="#!">
+                <form class="text-center border border-dark p-5" id="register_form" action="POST">
 
                     <p class="h4 mb-4">Sign up</p>
 
                     <!-- First name -->
                     <input type="text" name="name" class="form-control mb-4" placeholder="Enter Name">
-
+                    <p class="error name_err text-left"></p>
                     <!-- E-mail -->
                     <input type="email" name="email" class="form-control mb-4" placeholder="E-mail">
-
+                    <p class="error email_err text-left"></p>
                     <!-- Password -->
                     <input type="password" name="password" class="form-control mb-4" placeholder="Password">
-
-                    <!-- Phone number -->
+                    <p class="error password_err text-left"></p>
+                    <!-- Confirm Password -->
                     <input type="password" name="password_confirmation" class="form-control"
                         placeholder="Confirm Password">
-
+                    <p class="error password_confirmation_err text-left"></p>
                     <!-- Sign up button -->
                     <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
 
@@ -59,9 +59,9 @@
     </div>
 </section>
 
-<h1>User Registration</h1>
+{{-- <h1>User Registration</h1> --}}
 
-<form id="register_form">
+{{-- <form>
     <input type="text" name="name" placeholder="Enter Name">
     <br>
     <span class="error name_err"></span>
@@ -79,7 +79,7 @@
     <span class="error password_confirmation_err"></span>
     <br><br>
     <input type="submit" value="Register">
-</form>
+</form> --}}
 <br>
 <p class="result"></p>
 
@@ -98,10 +98,10 @@
                     if (data.msg) {
                         $('#register_form')[0].reset();
                         $('.error').text("");
-                        $('.result').text(data.msg);
+                        // $('.result').text(data.msg);
+                        window.open('/login', "_self");
                     } else {
                         printErrorMsg(data);
-
                     }
                 }
             });
@@ -115,13 +115,13 @@
                             $('.password_confirmation_err').text(val)[1];
                         } else {
                             if (val[0].includes('password confirmation')) {
-                                $(".password_confirmation_err").text(val)
+                                $(".password_confirmation_err").text("* " + val)
                             } else {
-                                $(".password_err").text(val)
+                                $(".password_err").text("* " + val)
                             }
                         }
                     } else {
-                        $('.' + key + '_err').text(val);
+                        $('.' + key + '_err').text("* " + val);
                     }
                 });
             }
